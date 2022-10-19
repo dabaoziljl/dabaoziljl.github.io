@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | Hexo</title>
+  <title>使用docker制作比赛镜像 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="docker 基础操作 列出本地镜像		 docker images 下载镜像                docker pull name:version 删除镜像                docker rmi name&#x2F;ID 列出运行容器        docker ps 列出所有容器        docker ps -a 新建容器               docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/10/17/hello-world/index.html">
+<meta property="og:title" content="使用docker制作比赛镜像">
+<meta property="og:url" content="http://example.com/2022/10/19/%E4%BD%BF%E7%94%A8docker%E5%88%B6%E4%BD%9C%E6%AF%94%E8%B5%9B%E9%95%9C%E5%83%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="docker 基础操作 列出本地镜像		 docker images 下载镜像                docker pull name:version 删除镜像                docker rmi name&#x2F;ID 列出运行容器        docker ps 列出所有容器        docker ps -a 新建容器               docker">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-17T03:38:16.411Z">
-<meta property="article:modified_time" content="2022-10-17T03:38:16.411Z">
+<meta property="article:published_time" content="2022-10-19T00:55:32.000Z">
+<meta property="article:modified_time" content="2022-10-19T00:57:22.015Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="competition">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -73,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-使用docker制作比赛镜像" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/10/17/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-10-17T03:38:16.411Z" itemprop="datePublished">2022-10-17</time>
+    <a href="/2022/10/19/%E4%BD%BF%E7%94%A8docker%E5%88%B6%E4%BD%9C%E6%AF%94%E8%B5%9B%E9%95%9C%E5%83%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-10-19T00:55:32.000Z" itemprop="datePublished">2022-10-19</time>
 </a>
     
   </div>
@@ -87,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hello World
+      使用docker制作比赛镜像
     </h1>
   
 
@@ -95,42 +96,70 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="docker-基础操作"><a href="#docker-基础操作" class="headerlink" title="docker 基础操作"></a>docker 基础操作</h2><ul>
+<li>列出本地镜像		 docker images</li>
+<li>下载镜像                docker pull name:version</li>
+<li>删除镜像                docker rmi name&#x2F;ID</li>
+<li>列出运行容器        docker ps</li>
+<li>列出所有容器        docker ps -a</li>
+<li>新建容器               docker run -it 镜像名&#x2F;ID</li>
+<li>关闭并退出容器    exit（ctrl+d）</li>
+<li>暂时离开容器        crtl+p，ctrl+q</li>
+<li>进入后台运行的容器 docker attach id </li>
+<li>关闭容器                docker kill id</li>
+<li>复制文件                docker cp 本地文件路径 container_id:&#x2F;容器文件路径</li>
+<li>容器保存为镜像     docker commit 容器ID 镜像名:v版本</li>
+<li>输出镜像                docker save -o XXXXX.tar 镜像ID</li>
+<li>修改文件权限         sudo chmod a+rw &#x2F;XXX&#x2F;8f77aae9a091.tar</li>
+</ul>
+<h2 id="将conda环境制作为镜像"><a href="#将conda环境制作为镜像" class="headerlink" title="将conda环境制作为镜像"></a>将conda环境制作为镜像</h2><ul>
+<li><p>docker pull continuumio&#x2F;anaconda3     #下载装有anaconda的镜像</p>
+</li>
+<li><p>docker run -it –name new_anaconda continuumio&#x2F;anaconda3 &#x2F;bin&#x2F;bash       # 使用该镜像进入该容器</p>
+</li>
+<li><p>容器中的anaconda的位置在 &#x2F;opt&#x2F;conda&#x2F;envs</p>
+</li>
+<li><p>docker cp local_anaconda_path&#x2F;envs&#x2F;envs_name new_anaconda:&#x2F;opt&#x2F;conda&#x2F;envs    # 将本地的虚拟环境复制到相应的位置</p>
+</li>
+<li><p>docker commit new_anaconda new_anaconda_image # 导出新镜像</p>
+</li>
+<li><p>docker save new_anaconda_image -o new_anaconda_image.tar      # 生成镜像文件</p>
+</li>
+</ul>
+<h2 id="我的docker镜像制作流程"><a href="#我的docker镜像制作流程" class="headerlink" title="我的docker镜像制作流程"></a>我的docker镜像制作流程</h2><ul>
+<li>后来比赛不要求提交镜像了，所以最后没有自己制作镜像。</li>
+<li>这部分就当作为后续比赛和工作做准备了吧</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/17/hello-world/" data-id="cl9c89max00005dog3p164zbv" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/19/%E4%BD%BF%E7%94%A8docker%E5%88%B6%E4%BD%9C%E6%AF%94%E8%B5%9B%E9%95%9C%E5%83%8F/" data-id="cl9exgdr10008ty4f29g88ftt" data-title="使用docker制作比赛镜像" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/competition/" rel="tag">competition</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2022/10/19/%E5%A5%BD%E8%AF%8D%E5%A5%BD%E5%8F%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/19/labuladong%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          好词好句
+          labuladong刷题笔记
         
       </div>
     </a>
   
+  
+    <a href="/2022/10/19/scene-graph-paper-reading/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">scene graph paper reading</div>
+    </a>
   
 </nav>
 
