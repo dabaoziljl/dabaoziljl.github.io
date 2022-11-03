@@ -24,7 +24,7 @@
 <meta property="og:description" content="手把手刷动态规划动态规划基本技巧1、动态规划解题套路框架 明确 base case -&gt; 明确「状态」-&gt; 明确「选择」 -&gt; 定义 dp 数组&#x2F;函数的含义。 重叠子问题、最优子结构、状态转移方程就是动态规划三要素。   框架伪代码  123456789101112131415# 自顶向下递归的动态规划def dp(状态1, 状态2, ...):    for 选择 i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-29T04:00:40.000Z">
-<meta property="article:modified_time" content="2022-11-02T03:04:36.307Z">
+<meta property="article:modified_time" content="2022-11-03T03:26:40.669Z">
 <meta property="article:author" content="Jiale">
 <meta property="article:tag" content="学习ing">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.7k 字
+          11k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          73 分钟
+          88 分钟
         
       </span>
     
@@ -401,6 +401,54 @@
 <blockquote>
 <p>基本上是自己写的版本。dp[i] [j] 表示当前中心落在ring[i]上时， 输入key[j]所需要的步数。需要注意的是，只有ring[i] &#x3D;&#x3D; key[j]时，dp[i] [j]才不为∞。</p>
 </blockquote>
+<ul>
+<li>K站中转内最便宜的航班</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findCheapestPrice</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span>, flights: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], src: <span class="hljs-built_in">int</span>, dst: <span class="hljs-built_in">int</span>, k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        price = [[<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>        <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> flights:<br>            price[f[<span class="hljs-number">0</span>]][f[<span class="hljs-number">1</span>]] = f[<span class="hljs-number">2</span>]<br><br>        dp = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n<br>        dp[dst] = <span class="hljs-number">0</span> <span class="hljs-comment"># dp[i]表示i到终点的最小话费</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>+k):  <span class="hljs-comment"># k次到达终点</span><br>            tmp = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> dp]<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):  <span class="hljs-comment"># 从j到达终点</span><br>                <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n): <span class="hljs-comment"># 从j到达v再到达j</span><br>                    dp[j] = <span class="hljs-built_in">min</span>(dp[j], tmp[v] + price[j][v])<br>            <span class="hljs-comment"># print(dp)</span><br>        <span class="hljs-keyword">return</span> dp[src] <span class="hljs-keyword">if</span> dp[src] != <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>) <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span> <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>自己写的方法，时间复杂度略高，kn^2</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findCheapestPrice</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span>, flights: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], src: <span class="hljs-built_in">int</span>, dst: <span class="hljs-built_in">int</span>, k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># price = [[float(&#x27;inf&#x27;)] * n for _ in range(n)]</span><br>        <span class="hljs-comment"># for f in flights:</span><br>        <span class="hljs-comment">#     price[f[0]][f[1]] = f[2]</span><br><br>        dp = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n<br>        dp[dst] = <span class="hljs-number">0</span> <span class="hljs-comment"># dp[i]表示i到终点的最小话费</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>+k):  <span class="hljs-comment"># k次到达终点</span><br>            tmp = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> dp]<br>            <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> flights:<br>                dp[f[<span class="hljs-number">0</span>]] = <span class="hljs-built_in">min</span>(dp[f[<span class="hljs-number">0</span>]], tmp[f[<span class="hljs-number">1</span>]] + f[<span class="hljs-number">2</span>])<br>            <span class="hljs-comment"># print(dp)</span><br>        <span class="hljs-keyword">return</span> dp[src] <span class="hljs-keyword">if</span> dp[src] != <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>) <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span> <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>改进一下，时间复杂度变为km</p>
+</blockquote>
+<ul>
+<li>正则表达式匹配</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isMatch</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        m, n = <span class="hljs-built_in">len</span>(s), <span class="hljs-built_in">len</span>(p)<br><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">matches</span>(<span class="hljs-params">i: <span class="hljs-built_in">int</span>, j: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>            <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>            <span class="hljs-keyword">if</span> p[j - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;.&#x27;</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>            <span class="hljs-keyword">return</span> s[i - <span class="hljs-number">1</span>] == p[j - <span class="hljs-number">1</span>]<br><br>        dp = [[<span class="hljs-literal">False</span>] * (n + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m + <span class="hljs-number">1</span>)]<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m + <span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>                <span class="hljs-keyword">if</span> p[j - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;*&#x27;</span>:<br>                    dp[i][j] |= dp[i][j - <span class="hljs-number">2</span>]          <span class="hljs-comment"># 表示*使用0次 </span><br>                    <span class="hljs-keyword">if</span> matches(i, j - <span class="hljs-number">1</span>):<br>                        dp[i][j] |= dp[i - <span class="hljs-number">1</span>][j]      <span class="hljs-comment"># 表示当前字符还能使用且消掉了s的一个字符。</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> matches(i, j):<br>                        dp[i][j] |= dp[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> dp[m][n]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>学习学习，官方代码有点优雅。</p>
+</blockquote>
+<ul>
+<li><p>鸡蛋掉落</p>
+</li>
+<li><p>戳破气球</p>
+</li>
+<li><p>预测赢家</p>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">PredictTheWinner</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        <span class="hljs-comment"># dp[i][j]表示在区间i，j中时，当前玩家能获得的最大分数</span><br>        dp = [[<span class="hljs-number">0</span>]*<span class="hljs-built_in">len</span>(nums) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums))]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            dp[i][i] = nums[i]<br>        <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(nums)):<br>                dp[i][j] = <span class="hljs-built_in">max</span>(nums[i] - dp[i+<span class="hljs-number">1</span>][j], nums[j] - dp[i][j-<span class="hljs-number">1</span>])<br><br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][<span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">1</span>] &gt;= <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>博弈问题，双方都作出最优选择，因此双方的结果都应从dp中取</p>
+</blockquote>
+<ul>
+<li>石子游戏</li>
+</ul>
+<blockquote>
+<p>与上题相同。长度为偶数时，先手必胜。</p>
+</blockquote>
+<ul>
+<li><p>打家劫舍</p>
+</li>
+<li><p>股票买卖</p>
+</li>
+<li><p>KMP</p>
+</li>
+</ul>
 <h2 id="贪心类型问题"><a href="#贪心类型问题" class="headerlink" title="贪心类型问题"></a>贪心类型问题</h2>
                 
               </div>
