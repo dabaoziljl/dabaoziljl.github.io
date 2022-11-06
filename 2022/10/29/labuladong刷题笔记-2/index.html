@@ -24,7 +24,7 @@
 <meta property="og:description" content="手把手刷动态规划动态规划基本技巧1、动态规划解题套路框架 明确 base case -&gt; 明确「状态」-&gt; 明确「选择」 -&gt; 定义 dp 数组&#x2F;函数的含义。 重叠子问题、最优子结构、状态转移方程就是动态规划三要素。   框架伪代码  123456789101112131415# 自顶向下递归的动态规划def dp(状态1, 状态2, ...):    for 选择 i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-29T04:00:40.000Z">
-<meta property="article:modified_time" content="2022-11-04T02:49:43.397Z">
+<meta property="article:modified_time" content="2022-11-06T02:58:28.027Z">
 <meta property="article:author" content="Jiale">
 <meta property="article:tag" content="学习ing">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          14k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          100 分钟
+          115 分钟
         
       </span>
     
@@ -474,7 +474,54 @@
 <ul>
 <li>KMP</li>
 </ul>
-<h2 id="贪心类型问题"><a href="#贪心类型问题" class="headerlink" title="贪心类型问题"></a>贪心类型问题</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">strStr</span>(<span class="hljs-params">self, haystack: <span class="hljs-built_in">str</span>, needle: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># 构建KMP数组，i表示当前匹配状态，j表示当前输入的字符，dp[i][j]表示需要前往的状态</span><br>        dp = [[<span class="hljs-number">0</span>]*<span class="hljs-number">26</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(needle))]<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-built_in">ord</span>(needle[<span class="hljs-number">0</span>]) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] = <span class="hljs-number">1</span><br>        X = <span class="hljs-number">0</span>   <span class="hljs-comment"># X表示和当前状态有相同前缀的最近状态</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(needle)):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>                <span class="hljs-keyword">if</span> j + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>) == <span class="hljs-built_in">ord</span>(needle[i]):<br>                    dp[i][j] = i + <span class="hljs-number">1</span><br>                <span class="hljs-keyword">else</span>:<br>                    dp[i][j] = dp[X][j]<br>            X = dp[X][<span class="hljs-built_in">ord</span>(needle[i])-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)]<br>        <br>        j = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(haystack)):<br>            j = dp[j][<span class="hljs-built_in">ord</span>(haystack[i])-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)]<br>            <span class="hljs-keyword">if</span> j == <span class="hljs-built_in">len</span>(needle):<br>                <span class="hljs-keyword">return</span> i - <span class="hljs-built_in">len</span>(needle)+<span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="贪心类型问题"><a href="#贪心类型问题" class="headerlink" title="贪心类型问题"></a>贪心类型问题</h2><ul>
+<li>无重叠区间</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">eraseOverlapIntervals</span>(<span class="hljs-params">self, intervals: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># 按结束时间排序</span><br>        intervals.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])<br>        count = <span class="hljs-number">0</span><br>        end = intervals[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(intervals)):<br>            <span class="hljs-keyword">if</span> intervals[i][<span class="hljs-number">0</span>] &gt;= end:      <span class="hljs-comment"># 与当前end不相交</span><br>                end = intervals[i][<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">else</span>:<br>                count += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> count<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>每次选择结束时间最小的区间，这样能保证为其他区间留有最大的空间。</p>
+</blockquote>
+<ul>
+<li>用最少数量的箭引爆气球</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findMinArrowShots</span>(<span class="hljs-params">self, points: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(points)== <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br><br>        points.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])<br>        end = points[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]<br>        ret = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(points)):<br>            <span class="hljs-keyword">if</span> points[i][<span class="hljs-number">0</span>]&gt;end:<br>                ret += <span class="hljs-number">1</span><br>                end = points[i][<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> ret<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>与上相同的思路，每次只射气球的右边界。</p>
+</blockquote>
+<ul>
+<li>会议室</li>
+</ul>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">Q:</span>给你输入若干形如 [begin, <span class="hljs-keyword">end</span>] 的区间，代表若干会议的开始时间和结束时间，请你计算至少需要申请多少间会议室？<br><span class="hljs-symbol">A:</span>计算并对每一个会议的起止时间进行排序，然后顺序扫描。遇到会议开始则计数+<span class="hljs-number">1</span>，结束则计数-<span class="hljs-number">1</span>，求最大计数即可。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>视频拼接</li>
+</ul>
+<blockquote>
+<p>对区间起始位置排序，然后对结束位置降序排序。在当前已经覆盖的区域内，找能够覆盖范围最广的区间。</p>
+</blockquote>
+<ul>
+<li>跳跃游戏</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">canJump</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        n, rightmost = <span class="hljs-built_in">len</span>(nums), <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            <span class="hljs-keyword">if</span> i &lt;= rightmost:      <span class="hljs-comment"># 当前位置可达</span><br>                rightmost = <span class="hljs-built_in">max</span>(rightmost, i + nums[i])<br>                <span class="hljs-keyword">if</span> rightmost &gt;= n - <span class="hljs-number">1</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>每次跳跃更新目前可达的最右位置</p>
+</blockquote>
+<ul>
+<li>跳跃游戏2</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">jump</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        n = <span class="hljs-built_in">len</span>(nums)<br>        <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <br>        count = <span class="hljs-number">0</span><br>        pos = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> pos &lt; n:<br>            <span class="hljs-keyword">if</span> pos + nums[pos] &gt;= n-<span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> count + <span class="hljs-number">1</span><br><br>            cur_rightmost = <span class="hljs-number">0</span><br>            nxt_pos = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, nums[pos]+<span class="hljs-number">1</span>):<br>                <span class="hljs-keyword">if</span> cur_rightmost &lt; pos + j + nums[pos+j]:<br>                    nxt_pos = pos + j<br>                    cur_rightmost = pos + j + nums[pos+j]<br>            pos = nxt_pos<br>            count += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>与上同理，但感觉代码写的有点烂</p>
+</blockquote>
+
                 
               </div>
             
