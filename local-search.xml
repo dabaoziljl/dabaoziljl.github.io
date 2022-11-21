@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Conv+Trans模型调研</title>
+    <link href="/2022/11/21/Conv-Trans%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%A0%94/"/>
+    <url>/2022/11/21/Conv-Trans%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%A0%94/</url>
+    
+    <content type="html"><![CDATA[<h3 id="视觉任务中的Conv-Trans"><a href="#视觉任务中的Conv-Trans" class="headerlink" title="视觉任务中的Conv+Trans"></a>视觉任务中的Conv+Trans</h3><ul><li>(CVPR2022)CMT: Convolutional Neural Networks Meet Vision Transformers</li></ul><p><a href="https://imgse.com/i/zludte"><img src="https://s1.ax1x.com/2022/11/21/zludte.png" alt="zludte.png"></a></p><blockquote><p>使用LPU挖掘局部特征信息，并在多头注意力MHSA中结合了深度分离卷积，减小计算复杂度的同时引入卷积的特性。类似的，也在FFN中引入了卷积。</p></blockquote><ul><li>（ICCV2021）CvT: Introducing Convolutions to Vision Transformers</li></ul><p><a href="https://imgse.com/i/zlKUuq"><img src="https://s1.ax1x.com/2022/11/21/zlKUuq.png" alt="zlKUuq.png"></a></p><blockquote><p>将MHSA中，使用MLP的方式得到Q，K，V的方式，换成使用卷积的方式，并通过设置stride一定程度上减少计算复杂度。</p></blockquote><ul><li>（ICCV2021）Incorporating Convolution Designs into Visual Transformers</li></ul><blockquote><p>对token得获取做出了改变，将特征图转唯token而不是直接对图像进行转变。在FFN中融入了卷积的思想，将tokens转成了图像做卷积然后再转回去。</p></blockquote><ul><li>(ICLR2020)on the relationship between self-attention and convolutional layers</li></ul><blockquote><p>从理论和实验去验证self-attention可以代替卷积网络独立进行类似卷积的操作</p></blockquote><ul><li>(NIPS2021)Early Convolutions Help Transformers See Better</li></ul><blockquote><p>发现在ViT之前使用一个简单的卷积骨干相比于直接在原图上patchify，的训练过程更稳定且表现更好。</p></blockquote><ul><li><p>(TITS2022)3DCTN: 3D Convolution-Transformer Network for Point Cloud Classification</p><p><a href="https://imgse.com/i/zlQv9g"><img src="https://s1.ax1x.com/2022/11/21/zlQv9g.png" alt="zlQv9g.png"></a></p></li></ul><blockquote><p>使用了卷积核transformr串联的方式。因为是点云任务，所以用的是图卷积。</p></blockquote><ul><li>Conformer: Convolution-augmented Transformer for Speech Recognition</li></ul><p><a href="https://imgse.com/i/zllJ8e"><img src="https://s1.ax1x.com/2022/11/21/zllJ8e.png" alt="zllJ8e.png"></a></p><blockquote><p>在MHSA块原本的内部基础上，为了融入局部特征信息，在FFN之前串联了一个卷积块。</p></blockquote><ul><li>ConTNet: Why not use convolution and transformer at the same time?</li></ul><p><a href="https://imgse.com/i/zl3CkV"><img src="https://s1.ax1x.com/2022/11/21/zl3CkV.md.png" alt="zl3CkV.md.png"></a>](<a href="https://imgse.com/i/zl3CkV">https://imgse.com/i/zl3CkV</a>)</p><blockquote><p>卷积块和trans块串联。</p></blockquote><ul><li>ConViT: Improving Vision Transformers with Soft Convolutional Inductive Biases</li></ul><p><a href="https://imgse.com/i/zl8A4f"><img src="https://s1.ax1x.com/2022/11/21/zl8A4f.md.png" alt="zl8A4f.md.png"></a></p><blockquote><p>GPSA将卷积中的局部特性，通过初始化MSA中的attention map的方式融合到transformer中。attention map的初始化是局部的， 然后通过学习允许自注意力机制去学习跳出局部的有用信息。GPSA有超参数能够控制它更像是SA还是更像conv。</p></blockquote><ul><li>ConvTransformer: A Convolutional Transformer Network for Video Frame Synthesis</li></ul><blockquote><p>将MHSA换为了Multi-Head Convolutional Self-Attention。MHCSA中，使用了卷积，来生成QKV。</p></blockquote><h3 id="医学影像中的Conv-Trans"><a href="#医学影像中的Conv-Trans" class="headerlink" title="医学影像中的Conv+Trans"></a>医学影像中的Conv+Trans</h3><ul><li>（MICCAI2022）PHTrans: Parallelly Aggregating Global and Local Representations for Medical Image Segmentation</li></ul><p><a href="https://imgse.com/i/zlGVd1"><img src="https://s1.ax1x.com/2022/11/21/zlGVd1.png" alt="zlGVd1.png"></a></p><blockquote><p>在一个块中并行conv和trans</p></blockquote><ul><li>HiFormer: Hierarchical Multi-scale Representations Using Transformers for Medical Image Segmentation</li></ul><p><a href="https://imgse.com/i/zlGKzD"><img src="https://s1.ax1x.com/2022/11/21/zlGKzD.png" alt="zlGKzD.png"></a></p><blockquote><p>分别使用conv编码器和trans编码器来做特征提取，并做一些交互。之后再把两个多尺度的特征图融合一下。</p></blockquote><ul><li>UNet-2022: Exploring Dynamics in Non-isomorphic Architecture</li></ul><p><a href="https://imgse.com/i/zlGgYV"><img src="https://s1.ax1x.com/2022/11/21/zlGgYV.png" alt="zlGgYV.png"></a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>学习ing</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>labuladong刷题笔记-4</title>
     <link href="/2022/11/14/labuladong%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-4/"/>
     <url>/2022/11/14/labuladong%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-4/</url>
