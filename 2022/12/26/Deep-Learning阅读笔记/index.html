@@ -16,22 +16,22 @@
   <meta name="author" content="Jiale">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ubuntu常用指令 当前文件夹下文件数量   1ls -l | grep &quot;-&quot; | wc -l   当前文件夹下 各文件夹的大小   1du -h --max-depth&#x3D;1   压缩文件夹   1zip -r archive_name.zip filename   解压tar文件   1tar -xvf etc.tar -C &#x2F;date&#x2F;   Scp 进行文件的传输">
+    <meta name="description" content="CH1、引言 AI深度学习，可以让计算机从经验中学习，并根据层次化的概念体系来理解世界，而每个概念则通过与某些相对简单的概念之间的关系来定义。 知识库，将关于世界的知识用形式化的语言进行硬编码，并利用逻辑推理规则来自动理解这些形式化语言中的声明。 简单机器学习算法的性能很大程度上依赖于给定数据的表示。 表示学习（例如自编码器），使用机器学习本身来发掘特征表示。 深度学习，通过其他简单的表示来表达复">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu常用指令">
-<meta property="og:url" content="http://example.com/2022/10/19/ubuntu%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:title" content="Deep Learning阅读笔记">
+<meta property="og:url" content="http://example.com/2022/12/26/Deep-Learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ubuntu常用指令 当前文件夹下文件数量   1ls -l | grep &quot;-&quot; | wc -l   当前文件夹下 各文件夹的大小   1du -h --max-depth&#x3D;1   压缩文件夹   1zip -r archive_name.zip filename   解压tar文件   1tar -xvf etc.tar -C &#x2F;date&#x2F;   Scp 进行文件的传输">
+<meta property="og:description" content="CH1、引言 AI深度学习，可以让计算机从经验中学习，并根据层次化的概念体系来理解世界，而每个概念则通过与某些相对简单的概念之间的关系来定义。 知识库，将关于世界的知识用形式化的语言进行硬编码，并利用逻辑推理规则来自动理解这些形式化语言中的声明。 简单机器学习算法的性能很大程度上依赖于给定数据的表示。 表示学习（例如自编码器），使用机器学习本身来发掘特征表示。 深度学习，通过其他简单的表示来表达复">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-19T00:54:58.000Z">
-<meta property="article:modified_time" content="2022-12-03T08:28:17.666Z">
+<meta property="article:published_time" content="2022-12-26T07:56:23.000Z">
+<meta property="article:modified_time" content="2022-12-26T13:37:00.854Z">
 <meta property="article:author" content="Jiale">
-<meta property="article:tag" content="tips">
+<meta property="article:tag" content="学习ing">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>ubuntu常用指令 - Hexo</title>
+  <title>Deep Learning阅读笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ubuntu常用指令"></span>
+            <span id="subtitle" data-typed-text="Deep Learning阅读笔记"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-19 08:54" pubdate>
-          2022年10月19日 早上
+        <time datetime="2022-12-26 15:56" pubdate>
+          2022年12月26日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          597 字
+          222 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -268,83 +268,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ubuntu常用指令</h1>
+            <h1 style="display: none">Deep Learning阅读笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="ubuntu常用指令"><a href="#ubuntu常用指令" class="headerlink" title="ubuntu常用指令"></a>ubuntu常用指令</h2><ul>
-<li>当前文件夹下文件数量</li>
+                <h2 id="CH1、引言"><a href="#CH1、引言" class="headerlink" title="CH1、引言"></a>CH1、引言</h2><ul>
+<li><strong>AI深度学习</strong>，可以让计算机从经验中学习，并根据层次化的概念体系来理解世界，而每个概念则通过与某些相对简单的概念之间的关系来定义。</li>
+<li><strong>知识库</strong>，将关于世界的知识用形式化的语言进行硬编码，并利用逻辑推理规则来自动理解这些形式化语言中的声明。</li>
+<li>简单机器学习算法的性能很大程度上依赖于给定数据的<strong>表示</strong>。</li>
+<li><strong>表示学习</strong>（例如自编码器），使用机器学习本身来发掘特征表示。</li>
+<li><strong>深度学习</strong>，通过其他简单的表示来表达复杂的表示，解决了表示学习中的核心问题。</li>
 </ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l | grep <span class="hljs-string">&quot;-&quot;</span> | <span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>当前文件夹下 各文件夹的大小</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h --max-depth=1<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>压缩文件夹</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zip -r archive_name.zip filename<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>解压tar文件</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvf etc.tar -C /date/<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>Scp 进行文件的传输</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -P ssh端口 -r 远程服务用户名@服务器ip:远程文件或目录 本地文件或目录<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>conda 删除环境</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove -n your_env_name --all<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>文件的重命名与移动</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> A B<br></code></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>at实现定时指令</li>
-</ul>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">at 06:00 tomorrow<br>at now +2 minutes<br>at 04:00am 12/30/2018<br>at -l            <span class="hljs-comment"># 显示所有任务</span><br>at -d num        <span class="hljs-comment"># 删除任务</span><br></code></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>输入命令后回车，继续输入命令；</p>
-<p>同时按下ctr+d 可以保存任务并推出。</p>
-</blockquote>
-<ul>
-<li><p>挂在硬盘命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo mount -t ext4 -o rw /dev/sda data2<br>sudo <span class="hljs-built_in">chown</span> -R lijl /home/lijl/data2<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因为研究不出怎么在&#x2F;etc&#x2F;fstab上改，一直显示只读，所以需要每次开机都挂载一次。</p>
-</blockquote>
-</li>
-<li><p>免密登陆</p>
-</li>
-</ul>
-<blockquote>
-<p>将本地的id_rsa.pub，复制到服务器上的.ssh&#x2F;authorized_host即可。</p>
-</blockquote>
-<ul>
-<li>查看CPU型号</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/cpuinfo | grep name | <span class="hljs-built_in">cut</span> -f2 -d: | <span class="hljs-built_in">uniq</span> -c<br></code></pre></td></tr></table></figure>
-
-
+<h2 id="CH2、线性代数"><a href="#CH2、线性代数" class="headerlink" title="CH2、线性代数"></a>CH2、线性代数</h2>
                 
               </div>
             
@@ -356,7 +292,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/tips/">#tips</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0ing/">#学习ing</a>
       
     </div>
   
@@ -368,8 +304,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ubuntu常用指令</div>
-      <div>http://example.com/2022/10/19/ubuntu常用指令/</div>
+      <div>Deep Learning阅读笔记</div>
+      <div>http://example.com/2022/12/26/Deep-Learning阅读笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +317,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月19日</div>
+          <div>2022年12月26日</div>
         </div>
       
       
@@ -413,9 +349,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/19/scene-graph-paper-reading/" title="scene graph paper reading">
+                      <a href="/2023/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/" title="计算机网络学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">scene graph paper reading</span>
+                        <span class="hidden-mobile">计算机网络学习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -423,8 +359,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/19/mac%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="mac使用笔记">
-                        <span class="hidden-mobile">mac使用笔记</span>
+                      <a href="/2022/11/28/git%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/" title="git备份服务器代码">
+                        <span class="hidden-mobile">git备份服务器代码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
